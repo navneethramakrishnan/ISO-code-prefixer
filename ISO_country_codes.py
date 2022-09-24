@@ -14,7 +14,7 @@ iso_dict = {}
 for i, country in enumerate(iso_codes_df.iloc[:,1]):
     iso_dict[country] = iso_codes_df.iloc[i, 0]
     
-#Remove paranthesis and following part from any country's name e.g. France (including Corsica) becomes France
+#Remove paranthesis and following part from any country's name e.g. France (including Corsica) becomes France and add ISO code as prefix with colon i.e. FR:France
 for i, country in enumerate(kx_list_df.iloc[:,6]):
     country_str = str(country)
     if '(' in country_str:
@@ -24,7 +24,7 @@ for i, country in enumerate(kx_list_df.iloc[:,6]):
     if country_str in iso_dict.keys():
         kx_list_df.iloc[i,6] = iso_dict[country_str]+':'+country_str
 
-#Print country's ISO code in front of name e.g. France -> FR:France
+#Check if there are any countries in the wrong format. Ignore nan entries. If any exist, change the ISO codes file for these countries and run again
 for country in kx_list_df.iloc[:,6]:
     if str(country)[2]!=':':
         print(country)
