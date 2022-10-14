@@ -1,13 +1,23 @@
 import pandas as pd
 import os
+from datetime import datetime
+import calendar
 
-#Change these to file paths for KX, ISO codes and output file
+mydate = datetime.now()
+
+
+# Change these to file paths for KX, ISO codes and output file. 
+# Check that input file has columns with the same strings as ehalls_list_of_cols (in addition to other useless columns).
+# Check that the input file's sheet name is of the form Woodward_MMM_YYYY
 kx_path = '/Users/navneethramakrishnan/Desktop/ww_kx.xlsx'
 iso_codes_path = '/Users/navneethramakrishnan/Desktop/iso_codes.xlsx'
 output_filename = '/Users/navneethramakrishnan/Desktop/updated_kx.xlsx'
+ehalls_list_of_cols = ['Room', 'Gender', 'Name', 'Forename', 'Surname', 'Student ID', 'Nationality', 'DOB', 'Course', 'Department', 'Disability', 'Medical Info', 'Special Notes', 'EmailAddress', 'Telephone', 'Mobile', 'Emergency Contact', 'Emergency Telephone', 'Emergency Mobile']
+sheet_name = 'Woodward_'+ mydate.strftime("%b") + '_' + str(datetime.now().year)
 
-kx_list_df = pd.read_excel(open(kx_path,'rb'), sheet_name='Sheet 1')
+kx_list_df = pd.read_excel(open(kx_path,'rb'), sheet_name=sheet_name)
 iso_codes_df = pd.read_excel(open(iso_codes_path,'rb'), sheet_name='Sheet 1')
+kx_list_df = kx_list_df[ehalls_list_of_cols]
 
 #Create a dictionary with country names as keys and ISO codes as values
 iso_dict = {}
