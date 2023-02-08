@@ -1,5 +1,6 @@
 # ISO-code-prefixer 
-Takes an input KX file from College and makes it eHalls compatible.  
+This is for Hall Management at Woodward Hall, Imperial College London.  
+This code takes an input KX file, adds ISO codes and makes it eHalls compatible.  
 
 ## Usage
 1. Download the input KX file from College. Download the file `iso_codes.xlsx` on your machine. Update the variables 'kx_path' and 'iso_codes_path' in 'ISO_country_codes.py'.  
