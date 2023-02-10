@@ -7,3 +7,6 @@ This code takes an input KX file, adds ISO codes and makes it eHalls compatible.
 2. Check that the input KX file has columns with column names matching those in `ehalls_list_of_cols`. Check that the sheet name of the input KX file is in the format 'Woodward_MMM_YYYY'.  
 3. Run `ISO_country_codes.py`  
 4. Open the newly created file stored under `output_filename` and upload to eHalls.
+
+## Possible issues
+1. xlwt not installed on your machine. This is needed to write directly to .xls instead of .xlsx. https://stackoverflow.com/questions/9848299/importerror-no-module-named-xlwt
